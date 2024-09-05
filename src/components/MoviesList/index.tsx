@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import MovieCard from '../MovieCard';
 import { Movie } from '@/types/movie';
 import ReactLoading from 'react-loading';
+import env from '@/config/env.config';
 
 
 export default function MovieList() {
@@ -16,7 +17,7 @@ export default function MovieList() {
     }, [])
 
     const getMovies = async () => {
-        const {data} = await axios.get('http://localhost:8080/movies');
+        const {data} = await axios.get(`${env.apiUrl}/movies`);
         setMovies(data);
         setIsLoading(false);
     }
