@@ -1,7 +1,9 @@
 'use client'
 
 import { LoginContainer, LoginContent, LoginHeadline, LoginInputContainer } from "./login.styled";
+import { SlLogin } from "react-icons/sl";
 
+import CustomButton from "@/components/CustomButton";
 
 export default function Login () {
     return(
@@ -15,6 +17,8 @@ export default function Login () {
                     <LoginInputContainer></LoginInputContainer>
 
                     <LoginInputContainer></LoginInputContainer>
+
+                    <CustomButton startIcon={<SlLogin size={20} />}>ENTRAR</CustomButton>
                     
                 </LoginContent>
                 
