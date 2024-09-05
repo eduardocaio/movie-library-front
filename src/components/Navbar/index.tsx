@@ -1,17 +1,20 @@
+'use client'
+
 import React from 'react'
 import './index.scss';
 import { MdFavorite } from "react-icons/md";
+import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from './navbar.styles';
 
 export default function Navbar() {
   return (
-    <div className="header-container">
-      <h2 className="header-title">Biblioteca de Filmes</h2>
-      <div className="header-items">
-        <div className="header-item">Procurar</div>
-        <div className="header-item">Entrar</div>
-        <div className="header-item">Criar conta</div>
-        <div className="header-item"><MdFavorite size={30} /></div>
-      </div>
-    </div>
+    <HeaderContainer>
+      <HeaderTitle>BIBLIOTECA DE FILMES</HeaderTitle>
+        <HeaderItems>
+          <HeaderItem>Procurar</HeaderItem>
+          <HeaderItem>Entrar</HeaderItem>
+          <HeaderItem>Criar conta</HeaderItem>
+          <HeaderItem><MdFavorite size={30} /></HeaderItem>
+        </HeaderItems>
+    </HeaderContainer>
   )
 }
