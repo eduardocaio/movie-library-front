@@ -4,6 +4,7 @@ import { LoginContainer, LoginContent, LoginHeadline, LoginInputContainer } from
 import { SlLogin } from "react-icons/sl";
 
 import CustomButton from "@/components/CustomButton";
+import CustomInput from "@/components/CustomInput";
 
 export default function Login () {
     return(
@@ -14,9 +15,9 @@ export default function Login () {
 
                     <LoginHeadline>Entre com a sua conta</LoginHeadline>
 
-                    <LoginInputContainer></LoginInputContainer>
+                    <LoginInputContainer><CustomInput placeholder="Digite seu usuário..."/></LoginInputContainer>
 
-                    <LoginInputContainer></LoginInputContainer>
+                    <LoginInputContainer><CustomInput placeholder="Digite sua senha..."/></LoginInputContainer>
 
                     <CustomButton startIcon={<SlLogin size={20} />}>ENTRAR</CustomButton>
                     

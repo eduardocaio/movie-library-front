@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Colors from '@/theme/theme.colors'
 
 export const LoginContainer = styled.div`
-  height: 100%;
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +12,7 @@ export const LoginHeadline = styled.p`
   font-weight: 600;
   font-size: 1.3rem;
   margin-bottom: 20px;
-  color: ${Colors.text.dark};
+  color: ${Colors.text.white};
 `
 
 export const LoginContent = styled.div`
