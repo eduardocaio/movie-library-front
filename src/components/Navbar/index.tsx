@@ -25,7 +25,7 @@ export default function Navbar() {
   return (
 
     <HeaderContainer>
-      <HeaderTitle onClick={handleHomeClick}>BIBLIOTECA DE FILMES</HeaderTitle>
+      <HeaderTitle onClick={handleHomeClick}>SOCIALFLIX</HeaderTitle>
       <HeaderItems>
         <HeaderItem>Procurar</HeaderItem>
         <HeaderItem onClick={handleLoginClick}>Entrar</HeaderItem>

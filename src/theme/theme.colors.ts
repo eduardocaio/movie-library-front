@@ -6,7 +6,8 @@ const Colors = {
     },
     background: {
         dark: '#16181A',
-        shadow: '#4F4F4F'
+        shadow: '#4F4F4F',
+        flix: 	'#831010'
     },
     input: {
         background: '#E9ECEF',
