@@ -1,5 +1,5 @@
 const Colors = {
-    primary: '',
+    primary: '16181A',
     text: {
         white: '#F8F9FA',
         dark: '#343A40'
@@ -12,7 +12,8 @@ const Colors = {
         background: '#E9ECEF',
         placeholder: '#6C757D'
     },
-    error: '#FF6A6A'
+    error: '#FF6A6A',
+    star: '#F3EB00'
 
 }
 

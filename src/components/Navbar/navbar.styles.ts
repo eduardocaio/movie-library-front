@@ -27,5 +27,10 @@ export const HeaderItem = styled.div`
 
     &:nth-child(1), &:nth-child(2), &:nth-child(3){
         margin-right: 40px;
+        color: ${Colors.text.white};
+    }
+
+    &:hover{
+        cursor: pointer;
     }
 `
