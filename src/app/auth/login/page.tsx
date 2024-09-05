@@ -14,10 +14,16 @@ export default function Login () {
                 <LoginContent>
 
                     <LoginHeadline>Entre com a sua conta</LoginHeadline>
+                
+                    <LoginInputContainer>
+                        <p>E-mail</p>
+                        <CustomInput placeholder="Digite seu usuário..."/>
+                    </LoginInputContainer>
 
-                    <LoginInputContainer><CustomInput placeholder="Digite seu usuário..."/></LoginInputContainer>
-
-                    <LoginInputContainer><CustomInput placeholder="Digite sua senha..."/></LoginInputContainer>
+                    <LoginInputContainer>
+                        <p>Senha</p>
+                        <CustomInput placeholder="Digite sua senha..."/>
+                    </LoginInputContainer>
 
                     <CustomButton startIcon={<SlLogin size={20} />}>ENTRAR</CustomButton>
                     

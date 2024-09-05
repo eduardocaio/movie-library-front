@@ -23,7 +23,7 @@ export const LoginContent = styled.div`
 `
 
 export const LoginSubtitle = styled.p`
-  color: ${Colors.text.dark};
+  color: ${Colors.text.white};
   padding-bottom: 20px;
   border-bottom: 1px solid #6c757d;
   width: 100%;
@@ -36,6 +36,7 @@ export const LoginSubtitle = styled.p`
 export const LoginInputContainer = styled.div`
   width: 100%;
   margin-bottom: 20px;
+  color: ${Colors.text.white};
   p:nth-child(1) {
     font-weight: 600;
     margin-bottom: 5px;
