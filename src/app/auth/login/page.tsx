@@ -8,13 +8,13 @@ import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
 import InputErrorMessage from "@/components/InputErrorMessage";
 
-interface LogInForm{
+interface LoginForm{
     username: string,
     password: string,
 }
 
 export default function Login () {
-    const {register, formState: {errors}, handleSubmit} = useForm();
+    const {register, formState: {errors}, handleSubmit} = useForm<LoginForm>();
 
     const handleSubmitPress = (data: any) => {
         console.log({data})

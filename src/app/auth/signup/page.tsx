@@ -9,7 +9,7 @@ import CustomInput from "@/components/CustomInput";
 import CustomButton from "@/components/CustomButton";
 import InputErrorMessage from "@/components/InputErrorMessage";
 
-interface SignUpForm{
+interface SignupForm{
     name: string,
     email: string,
     username: string,
@@ -18,7 +18,7 @@ interface SignUpForm{
 }
 
 export default function Signup (){
-    const {register, handleSubmit, watch, formState: {errors}} = useForm();
+    const {register, handleSubmit, watch, formState: {errors}} = useForm<SignupForm>();
 
     const watchPassword = watch('password');
 
@@ -95,7 +95,7 @@ export default function Signup (){
                         )}
 
                     </SignUpInputContainer>
-                    
+
                     <CustomButton startIcon={<FiLogIn size={18}/>} onClick={() => handleSubmit(handleSubmitPress)()}>CRIAR CONTA</CustomButton>
 
                 </SignUpContent>
