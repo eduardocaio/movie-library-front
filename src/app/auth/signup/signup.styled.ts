@@ -1,40 +1,32 @@
-import styled from 'styled-components'
 import Colors from '@/theme/theme.colors'
+import styled from 'styled-components'
 
-export const LoginContainer = styled.div`
+export const SignUpContainer = styled.div`
   height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
 `
 
-export const LoginHeadline = styled.p`
+export const SignUpHeadline = styled.p`
   font-weight: 600;
   font-size: 1.3rem;
   margin-bottom: 20px;
   color: ${Colors.text.white};
+  padding-bottom: 20px;
   border-bottom: 1px solid #6c757d;
+  width: 100%;
+  text-align: center;
 `
 
-export const LoginContent = styled.div`
+export const SignUpContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 450px;
 `
 
-export const LoginSubtitle = styled.p`
-  color: ${Colors.text.white};
-  padding-bottom: 20px;
-  border-bottom: 1px solid #6c757d;
-  width: 100%;
-  margin-top: 20px;
-  text-align: center;
-  font-weight: 500;
-  margin-bottom: 20px;
-`
-
-export const LoginInputContainer = styled.div`
+export const SignUpInputContainer = styled.div`
   width: 100%;
   margin-bottom: 20px;
   color: ${Colors.text.white};

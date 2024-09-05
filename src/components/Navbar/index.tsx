@@ -22,6 +22,10 @@ export default function Navbar() {
     router.push('/');
   }
 
+  const handleSignupClick = () =>{
+    router.push('/auth/signup');
+  }
+
   return (
 
     <HeaderContainer>
@@ -29,7 +33,7 @@ export default function Navbar() {
       <HeaderItems>
         <HeaderItem>Procurar</HeaderItem>
         <HeaderItem onClick={handleLoginClick}>Entrar</HeaderItem>
-        <HeaderItem>Criar conta</HeaderItem>
+        <HeaderItem onClick={handleSignupClick}>Criar conta</HeaderItem>
         <HeaderItem><MdFavorite size={30} /></HeaderItem>
       </HeaderItems>
     </HeaderContainer >

@@ -8,6 +8,11 @@ import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
 import InputErrorMessage from "@/components/InputErrorMessage";
 
+interface LogInForm{
+    username: string,
+    password: string,
+}
+
 export default function Login () {
     const {register, formState: {errors}, handleSubmit} = useForm();
 
@@ -24,7 +29,7 @@ export default function Login () {
                     <LoginHeadline>Entre com a sua conta</LoginHeadline>
                 
                     <LoginInputContainer>
-                        <p>E-mail</p>
+                        <p>Nome de usuário</p>
                         <CustomInput hasError={!!errors?.username} placeholder="Digite seu usuário..." {...register('username', {required: true})}/>
 
                         {errors?.username?.type === 'required' && (
@@ -34,7 +39,7 @@ export default function Login () {
 
                     <LoginInputContainer>
                         <p>Senha</p>
-                        <CustomInput hasError={!!errors?.password} placeholder="Digite sua senha..." {...register('password', {required: true})}/>
+                        <CustomInput hasError={!!errors?.password} placeholder="Digite sua senha..." {...register('password', {required: true})} type="password"/>
 
                         {errors?.password?.type === 'required' && (
                             <InputErrorMessage >A senha é obrigatória</InputErrorMessage>
