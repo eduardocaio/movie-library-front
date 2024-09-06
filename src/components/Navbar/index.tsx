@@ -1,16 +1,16 @@
 'use client'
 
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { MdFavorite } from "react-icons/md";
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from './navbar.styles';
-import Link from 'next/link';
 
+interface NavbarProps{
+  checkAuth: boolean;
+}
 
-
-export default function Navbar() {
+const  Navbar: FunctionComponent<NavbarProps> = ({checkAuth}) => {
 
   const router = useRouter();
 
@@ -32,10 +32,21 @@ export default function Navbar() {
       <HeaderTitle onClick={handleHomeClick}>SOCIALFLIX</HeaderTitle>
       <HeaderItems>
         <HeaderItem>Procurar</HeaderItem>
-        <HeaderItem onClick={handleLoginClick}>Entrar</HeaderItem>
-        <HeaderItem onClick={handleSignupClick}>Criar conta</HeaderItem>
+        
+        {checkAuth ? 
+          <HeaderItem>Nome do usuário</HeaderItem>  
+          :
+          <>
+          <HeaderItem onClick={handleLoginClick}>Entrar</HeaderItem>
+          <HeaderItem onClick={handleSignupClick}>Criar conta</HeaderItem>
+          </> 
+        }
+
+        
         <HeaderItem><MdFavorite size={30} /></HeaderItem>
       </HeaderItems>
     </HeaderContainer >
   )
 }
+
+export default Navbar;
