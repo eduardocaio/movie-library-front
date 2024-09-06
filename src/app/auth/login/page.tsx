@@ -7,6 +7,10 @@ import { useForm } from "react-hook-form";
 import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
 import InputErrorMessage from "@/components/InputErrorMessage";
+import { useMemo, useRef } from "react";
+import { LoginService } from "@/services/LoginService";
+import { Toast } from "primereact/toast";
+import { useRouter } from "next/navigation";
 
 interface LoginForm{
     username: string,
@@ -14,15 +18,39 @@ interface LoginForm{
 }
 
 export default function Login () {
+
     const {register, formState: {errors}, handleSubmit} = useForm<LoginForm>();
+    const loginService = useMemo(() => new LoginService(), [])
+    const toast = useRef<Toast>(null);
+    const router = useRouter();
+
 
     const handleSubmitPress = (data: any) => {
-        console.log({data})
+        loginService.login(data.username, data.password).then((response) => {
+            localStorage.setItem('TOKEN_API_BACKEND', response.data.acessToken);
+            toast.current?.show({
+                severity: 'info',
+                summary: 'Sucesso!',
+                detail: 'Usuário logado com sucesso!'
+            });
+
+            router.push('/');
+
+        }).catch((error) => {
+            const errorMessage = error?.data?.message || 'Erro ao cadastrar!';
+            console.log(errorMessage);
+            toast.current?.show({
+                severity: 'error',
+                summary: 'Erro!',
+                detail: 'Erro ao logar, usuário ou senha inválidos!'
+            })
+        });
     }
 
     return(
         <>
             <LoginContainer>
+                <Toast ref={toast} />
 
                 <LoginContent>
 
