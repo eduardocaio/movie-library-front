@@ -1,10 +1,12 @@
 import axios from 'axios';
-import './index.scss';
+import ReactLoading from 'react-loading';
 import { useState, useEffect } from 'react';
+
 import MovieCard from '../MovieCard';
 import { Movie } from '@/types/movie';
-import ReactLoading from 'react-loading';
 import env from '@/config/env.config';
+
+import './index.scss';
 
 
 export default function MovieList() {
