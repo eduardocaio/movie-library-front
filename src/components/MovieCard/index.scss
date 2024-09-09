@@ -63,7 +63,7 @@
         }
 
         .movie-infos:has(.description) .hidden-content{
-            height: 70px;
+            height: 90px;
         }
 
         .movie-infos:not(:has(.description)) .hidden-content{
