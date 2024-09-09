@@ -5,27 +5,29 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100vh;
     background-image: url("https://img.freepik.com/free-photo/movie-background-collage_23-2149876014.jpg?t=st=1725567303~exp=1725570903~hmac=0c675a00caedbcc5c2ec6c43cb8c1c5a08917fac305f915726e36ffd7a3c99c4&w=1380");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative; 
 }
 
 body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: inherit; /* Usa a mesma imagem de fundo */
+    background-image: inherit; 
     background-position: inherit;
     background-repeat: inherit;
     background-size: inherit;
-    filter: brightness(22%); /* Aplica o filtro somente no pseudo-elemento */
-    z-index: -1; /* Mantém o pseudo-elemento atrás do conteúdo */
-  }
+    filter: brightness(22%);
+    z-index: -1;
+    pointer-events: none; 
+}
