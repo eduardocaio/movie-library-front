@@ -5,6 +5,19 @@
     min-height: calc(100vh - 72px);
 }
 
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.share-buttons .custom-button {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+
 .movie-list{
     padding: 24px 3%;
     display: grid;
@@ -14,11 +27,20 @@
     width: 100%;
 
     @media (max-width: 768px) {
-        grid-template-columns: repeat(2, 1fr); // 2 colunas em telas menores
+        grid-template-columns: repeat(2, 1fr);
       }
     
       @media (max-width: 480px) {
-        grid-template-columns: 1fr; // 1 coluna em telas muito pequenas
+        grid-template-columns: 1fr;
       }
       
+}
+
+.tagline {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #FFFF;
+  text-transform: uppercase;
 }
