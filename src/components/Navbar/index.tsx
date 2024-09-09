@@ -1,52 +1,90 @@
 'use client'
 
-import React, { FunctionComponent } from 'react'
-import { MdFavorite } from "react-icons/md";
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
+import { useForm } from 'react-hook-form';
+import { jwtDecode } from 'jwt-decode';
 
-import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from './navbar.styles';
+import './index.scss'; 
 
-interface NavbarProps{
+import CustomInput from '../CustomInput';
+import CustomDropdown from '../Dropdown';
+
+interface NavbarProps {
   checkAuth: boolean;
 }
 
-const  Navbar: FunctionComponent<NavbarProps> = ({checkAuth}) => {
+interface SearchForm {
+  search: string
+}
+
+interface DecodedToken {
+  sub: string;
+}
+
+const Navbar: FunctionComponent<NavbarProps> = ({ checkAuth }) => {
 
   const router = useRouter();
+  const { register, handleSubmit, reset } = useForm<SearchForm>();
+  const [subject, setSubject] = useState<string | null>(null);
 
-  const handleLoginClick = () =>{
-    router.push('/auth/login');
-  }
+  useEffect(() => {
+    const token = localStorage.getItem('TOKEN_API_BACKEND');
+    if (token) {
+      const decoded: DecodedToken = jwtDecode(token);
+      setSubject(decoded.sub);
+    }
+  }, []);
 
-  const handleHomeClick = () =>{
+
+  const handleHomeClick = () => {
     router.push('/');
   }
 
-  const handleSignupClick = () =>{
-    router.push('/auth/signup');
+  const handleSubmitPress = (data: SearchForm) => {
+    if (!data.search) return
+    router.push(`/search/${data.search}`)
+    reset({ search: '' });
   }
 
+
+
   return (
+    <div className='header-container'>
+      <div className='header-title' onClick={handleHomeClick}>
+        CAJUFLIX
+      </div>
 
-    <HeaderContainer>
-      <HeaderTitle onClick={handleHomeClick}>SOCIALFLIX</HeaderTitle>
-      <HeaderItems>
-        <HeaderItem>Procurar</HeaderItem>
-        
-        {checkAuth ? 
-          <HeaderItem>Nome do usuário</HeaderItem>  
-          :
-          <>
-          <HeaderItem onClick={handleLoginClick}>Entrar</HeaderItem>
-          <HeaderItem onClick={handleSignupClick}>Criar conta</HeaderItem>
-          </> 
-        }
+      <div className='header-search'>
+        <CustomInput
+          className='form-control'
+          placeholder='Buscar por um filme...'
+          {...register('search')}
+          onEnterPress={handleSubmit(handleSubmitPress)}
+        />
+      </div>
 
-        
-        <HeaderItem><MdFavorite size={30} /></HeaderItem>
-      </HeaderItems>
-    </HeaderContainer >
-  )
+      {checkAuth ? (
+        <CustomDropdown
+          menuItems={[
+            { label: 'Favoritos', action: 'favorites' },
+            { label: 'Sair', action: 'logout' },
+          ]}
+        >
+          {subject}
+        </CustomDropdown>
+      ) : (
+        <CustomDropdown
+          menuItems={[
+            { label: 'Entrar', action: 'login' },
+            { label: 'Criar Conta', action: 'signup' },
+          ]}
+        >
+          Iniciar sessão
+        </CustomDropdown>
+      )}
+    </div>
+  );
 }
 
 export default Navbar;

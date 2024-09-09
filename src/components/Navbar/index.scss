@@ -1,0 +1,59 @@
+.header-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: 	#831010;
+    padding: 15px 7%;
+    color: #ffffff;
+  }
+  
+  .header-title {
+    width: 160px;
+    font-weight: bold;
+    font-size: 1.5rem;
+  
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  
+  .header-search {
+    background-color: #db0000;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+  
+    svg {
+      padding: 6px;
+      border: 0;
+      outline: 0;
+      color: #db0000;
+    }
+  }
+  
+  .header-items {
+    flex: 1;
+    list-style: none;
+    text-align: center;
+  }
+  
+  .header-item {
+    display: inline-block;
+    margin: 10px 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+  
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      margin-right: 1px;
+      color: #ffffff;
+    }
+  
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  
