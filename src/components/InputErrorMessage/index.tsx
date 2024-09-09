@@ -1,13 +1,12 @@
-import { FunctionComponent, ReactNode } from 'react'
-
-import { InputErrorMessageContainer } from './input-error-message.styled'
+import { FunctionComponent, ReactNode } from 'react';
+import './index.scss'; 
 
 interface InputErrorMessageProps {
     children: ReactNode;
-  }
-
-const InputErrorMessage: FunctionComponent<InputErrorMessageProps> = ({ children }) => {
-  return <InputErrorMessageContainer>{children}</InputErrorMessageContainer>
 }
 
-export default InputErrorMessage
+const InputErrorMessage: FunctionComponent<InputErrorMessageProps> = ({ children }) => {
+  return <p className="input-error-message">{children}</p>;
+};
+
+export default InputErrorMessage;
