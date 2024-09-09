@@ -53,7 +53,7 @@ npm install
 
 Configure as variáveis de ambiente: Crie um arquivo .env com as seguintes informações:
 
-NEXT_PUBLIC_API_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://localhost:8080
 
 Inicie a aplicação:
 
