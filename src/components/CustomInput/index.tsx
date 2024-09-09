@@ -1,17 +1,34 @@
-import React, { FunctionComponent, InputHTMLAttributes } from "react";
-import { CustomInputContainer } from "./custom-input.styled";
+import React, { FunctionComponent, InputHTMLAttributes, ForwardedRef } from "react";
+
+import './index.scss';
 
 interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
-    hasError?: boolean
+    hasError?: boolean;
+    onEnterPress?: () => void;
 }
 
 const CustomInput: FunctionComponent<CustomInputProps> = React.forwardRef(
-    (props, ref) => {
-        return <CustomInputContainer {...props} ref={ref as any}/>
+    (props: CustomInputProps, ref: ForwardedRef<HTMLInputElement>) => {
+        const { hasError, onEnterPress, ...rest } = props;
+
+        const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+            if (event.key === 'Enter' && onEnterPress) {
+                event.preventDefault();
+                onEnterPress();
+            }
+        };
+
+        return (
+            <input
+                {...rest}
+                ref={ref}
+                className={`custom-input ${hasError ? 'error' : ''}`}
+                onKeyDown={handleKeyDown}
+            />
+        );
     }
-)
+);
 
-
-CustomInput.displayName = 'CustomInput'
+CustomInput.displayName = 'CustomInput';
 
 export default CustomInput;
