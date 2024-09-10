@@ -10,10 +10,6 @@ import './index.scss';
 import CustomInput from '../CustomInput';
 import CustomDropdown from '../Dropdown';
 
-interface NavbarProps {
-  checkAuth: boolean;
-}
-
 interface SearchForm {
   search: string
 }
@@ -22,7 +18,7 @@ interface DecodedToken {
   sub: string;
 }
 
-const Navbar: FunctionComponent<NavbarProps> = ({ checkAuth }) => {
+const Navbar = () => {
 
   const router = useRouter();
   const { register, handleSubmit, reset } = useForm<SearchForm>();
@@ -64,7 +60,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ checkAuth }) => {
         />
       </div>
 
-      {checkAuth ? (
+      {subject ? (
         <CustomDropdown
           menuItems={[
             { label: 'Favoritos', action: 'favorites' },

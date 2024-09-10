@@ -1,8 +1,5 @@
-'use client';
-
-import { useEffect, useState } from "react";
 import { Saira } from "next/font/google";
-import Head from "next/head";
+import type { Metadata } from "next";
 
 import Navbar from "@/components/Navbar";
 
@@ -10,9 +7,11 @@ import "./globals.scss";
 
 const saira = Saira({ subsets: ["latin"] });
 
-const checkAuth = () => {
-  return localStorage.getItem('TOKEN_API_BACKEND') !== null;
-}
+export const metadata: Metadata = {
+  title: "CaJuFlix",
+  description: "Site de busca de filmes",
+};
+
 
 export default function RootLayout({
   children,
@@ -20,22 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const [authenticated, setAuthenticated] = useState(false);
-
-  useEffect(() => {
-    setAuthenticated(checkAuth());
-  }, []);
 
   return (
     <html lang="en">
-      <Head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Rede social de filmes" />
-        <title>CaJuFlix</title>
-      </Head>
-      <body className={saira.className}> {/* Aplicando a fonte Saira */}
-        <Navbar checkAuth={authenticated}/>
+      <body className={saira.className}>
+        <Navbar />
         {children}
       </body>
     </html>
