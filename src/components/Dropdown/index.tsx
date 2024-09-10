@@ -1,8 +1,9 @@
 import Dropdown from 'react-bootstrap/Dropdown';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
-import './index.scss'
 import { useRouter } from 'next/navigation';
+import React from 'react';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.scss';
 
 interface MenuItem {
   label: string;
@@ -11,7 +12,7 @@ interface MenuItem {
 
 interface CustomDropdownProps {
   children: React.ReactNode;
-  menuItems: MenuItem[]; // Lista de itens do menu
+  menuItems: MenuItem[];
 }
 
 const CustomDropdown: React.FC<CustomDropdownProps> = ({ children, menuItems }) => {

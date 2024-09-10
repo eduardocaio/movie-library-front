@@ -1,12 +1,28 @@
-/* customStyles.scss */
 .dropdown-toggle {
-    background-color: 			#ba0c0c; /* Cor de fundo personalizada */
-    border: none; /* Remover borda padrão */
-    color: #FFF; /* Cor do texto */
-    text-transform: uppercase;
-  }
-  
-  .dropdown-toggle:hover {
-    background-color:	#980a0a; /* Cor de fundo ao passar o mouse */
-  }
-  
+  background-color: #ba0c0c;
+  border: none;
+  color: #FFF;
+  text-transform: uppercase;
+}
+
+.dropdown-toggle:hover {
+  background-color: #980a0a;
+}
+
+.dropdown-menu {
+  background-color: #BA0C0C;
+  border: 1px solid #831010;
+}
+
+.dropdown-item {
+  color: #ffffff;
+  padding: 10px 15px; 
+}
+
+.dropdown-item:hover {
+  background-color: #6b0a0a;
+}
+
+.dropdown-item:active {
+  background-color: #831010;
+}
