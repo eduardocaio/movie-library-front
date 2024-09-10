@@ -110,7 +110,10 @@ const Movie = ({ params }: Props) => {
 
             getFavoriteMovies(subject);
         } catch (error) {
-            console.error('Erro ao adicionar aos favoritos:', error);
+            const token = localStorage.removeItem('TOKEN_API_BACKEND');
+            window.location.reload()
+
+            window.location.href = '/auth/login'
         }
     }
 
@@ -127,7 +130,10 @@ const Movie = ({ params }: Props) => {
             });
             getFavoriteMovies(subject);
         } catch (error) {
-            console.error('Erro ao remover dos favoritos:', error);
+            const token = localStorage.removeItem('TOKEN_API_BACKEND');
+            window.location.reload()
+
+            window.location.href = '/auth/login'
         }
     }
 
@@ -164,11 +170,11 @@ const Movie = ({ params }: Props) => {
                         </p>
                         <div className="favorite-button">
                             {authenticated ? (
-                                <CustomButton className="custom-button" startIcon={<FaHeart size={18} />} onClick={isFavorite ? handleRemoveFavorite : handleAddFavorite}>
+                                <CustomButton startIcon={<FaHeart size={18} />} onClick={isFavorite ? handleRemoveFavorite : handleAddFavorite}>
                                     {isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
                                 </CustomButton>
                             ) : (
-                                <CustomButton className="custom-button" startIcon={<FaHeart size={18} />} onClick={handleMoveLogin}>
+                                <CustomButton startIcon={<FaHeart size={18} />} onClick={handleMoveLogin}>
                                     Adicionar aos favoritos
                                 </CustomButton>
                             )}
