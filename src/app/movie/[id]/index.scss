@@ -8,7 +8,7 @@
   text-align: center;
 }
 
-.loading-container{
+.loading-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +49,7 @@
   padding: 1rem;
   border: 1px solid #ccc; 
   border-radius: 8px;
-  background-color: #333; 
+  background-color: #333;
   position: relative;
 }
 
@@ -63,14 +63,11 @@
 }
 
 .favorite-button {
-  width: 100%; 
   display: flex;
   justify-content: center; 
   margin-top: 1rem;
-  position: absolute; 
-  bottom: -3.5rem; 
 }
 
 .custom-button {
-  width: 100%; 
+  width: auto; 
 }
