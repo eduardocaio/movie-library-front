@@ -58,13 +58,13 @@ export default function Signup() {
 
 
         setTimeout(() => {
-            router.refresh();
-        }, 500);
+            router.push('/auth/login');
+        }, 5000);
 
         loginService.newRegister(newUser).then((response) => {
             setAlertInfo({
                 variant: 'success',
-                message: 'Usuário registrado com sucesso!'
+                message: 'Usuário registrado com sucesso. Confirme seu cadastro com o link enviado para seu e-mail!'
             });
         }).catch((error) => {
             const errorMessage = error?.response?.data?.message || 'Erro ao cadastrar!';
@@ -104,10 +104,10 @@ export default function Signup() {
 
                     <div className='signUpInputContainer'>
                         <p>E-mail</p>
-                        <CustomInput 
-                            hasError={!!errors?.email} 
-                            placeholder="Digite seu e-mail..." 
-                            {...register('email', { required: true, validate: (value) => validator.isEmail(value) })} 
+                        <CustomInput
+                            hasError={!!errors?.email}
+                            placeholder="Digite seu e-mail..."
+                            {...register('email', { required: true, validate: (value) => validator.isEmail(value) })}
                         />
                         {errors?.email?.type === 'required' && (
                             <InputErrorMessage>O e-mail é obrigatório</InputErrorMessage>
@@ -119,11 +119,11 @@ export default function Signup() {
 
                     <div className='signUpInputContainer'>
                         <p>Senha</p>
-                        <CustomInput 
-                            hasError={!!errors?.password} 
-                            placeholder="Digite sua senha..." 
-                            type="password" 
-                            {...register('password', { required: true })} 
+                        <CustomInput
+                            hasError={!!errors?.password}
+                            placeholder="Digite sua senha..."
+                            type="password"
+                            {...register('password', { required: true })}
                         />
                         {errors?.password?.type === 'required' && (
                             <InputErrorMessage>A senha é obrigatória</InputErrorMessage>
@@ -132,11 +132,11 @@ export default function Signup() {
 
                     <div className='signUpInputContainer'>
                         <p>Confirmação de senha</p>
-                        <CustomInput 
-                            hasError={!!errors?.confirmPassword} 
-                            placeholder="Digite novamente sua senha..." 
-                            type="password" 
-                            {...register('confirmPassword', { required: true, validate: (value) => value === watchPassword })} 
+                        <CustomInput
+                            hasError={!!errors?.confirmPassword}
+                            placeholder="Digite novamente sua senha..."
+                            type="password"
+                            {...register('confirmPassword', { required: true, validate: (value) => value === watchPassword })}
                         />
                         {errors?.confirmPassword?.type === 'required' && (
                             <InputErrorMessage>É necessário fazer a confirmação da senha</InputErrorMessage>
@@ -144,6 +144,10 @@ export default function Signup() {
                         {errors?.confirmPassword?.type === 'validate' && (
                             <InputErrorMessage>As senhas não correspondem</InputErrorMessage>
                         )}
+                    </div>
+
+                    <div className="link-container">
+                        <p className="link-item" onClick={() => router.push('/auth/login')}>Já tenho conta...</p>
                     </div>
 
                     <CustomButton startIcon={<FiLogIn size={18} />} onClick={() => handleSubmit(handleSubmitPress)()}>CRIAR CONTA</CustomButton>
