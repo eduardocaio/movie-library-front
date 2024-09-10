@@ -20,19 +20,19 @@ interface LoginForm {
 
 export default function Login() {
     const { register, formState: { errors }, handleSubmit } = useForm<LoginForm>();
-    const loginService = useMemo(() => new LoginService(), [])
+    const loginService = useMemo(() => new LoginService(), []);
     const router = useRouter();
     const [alertInfo, setAlertInfo] = useState<{ variant: string; message: string } | null>(null);
 
     useEffect(() => {
         if (alertInfo) {
-          const timer = setTimeout(() => {
-            setAlertInfo(null);
-          }, 5000);
-     
-          return () => clearTimeout(timer);
+            const timer = setTimeout(() => {
+                setAlertInfo(null);
+            }, 5000);
+
+            return () => clearTimeout(timer);
         }
-      }, [alertInfo]);
+    }, [alertInfo]);
 
     const handleSubmitPress = (data: any) => {
         loginService.login(data.username, data.password).then((response) => {
@@ -41,13 +41,11 @@ export default function Login() {
                 variant: 'success',
                 message: 'Logado com sucesso'
             });
-            window.location.reload()
-
-            window.location.href = '/'
 
             setTimeout(() => {
-                router.refresh();
-              }, 500);        
+                window.location.reload();
+                window.location.href = '/';
+            }, 5000);
 
         }).catch((error) => {
             const errorMessage = error?.response?.data?.message || 'Erro ao entrar na conta!';
@@ -64,33 +62,47 @@ export default function Login() {
                 {alertInfo && <CustomAlert variant={alertInfo.variant} message={alertInfo.message} />}
             </div>
             <div className='loginContainer'>
-
                 <div className='loginContent'>
-
                     <p className='loginHeadline'>Entre com a sua conta</p>
 
                     <div className='loginInputContainer'>
                         <p>Nome de usuário</p>
-                        <CustomInput hasError={!!errors?.username} placeholder="Digite seu usuário..." {...register('username', { required: true })} />
-
+                        <CustomInput
+                            hasError={!!errors?.username}
+                            placeholder="Digite seu usuário..."
+                            {...register('username', { required: true })}
+                        />
                         {errors?.username?.type === 'required' && (
-                            <InputErrorMessage >O nome de usuário é obrigatório</InputErrorMessage>
+                            <InputErrorMessage>
+                                O nome de usuário é obrigatório
+                            </InputErrorMessage>
                         )}
                     </div>
 
                     <div className='loginInputContainer'>
                         <p>Senha</p>
-                        <CustomInput hasError={!!errors?.password} placeholder="Digite sua senha..." {...register('password', { required: true })} type="password" />
-
+                        <CustomInput
+                            hasError={!!errors?.password}
+                            placeholder="Digite sua senha..."
+                            {...register('password', { required: true })}
+                            type="password"
+                        />
                         {errors?.password?.type === 'required' && (
-                            <InputErrorMessage >A senha é obrigatória</InputErrorMessage>
+                            <InputErrorMessage>
+                                A senha é obrigatória
+                            </InputErrorMessage>
                         )}
                     </div>
 
-                    <CustomButton startIcon={<SlLogin size={20} />} onClick={() => handleSubmit(handleSubmitPress)()}>ENTRAR</CustomButton>
+                    <div className="links-container">
+                        <p className="link-item" onClick={() => router.push('/auth/forgot-password')}>Esqueci a senha!</p>
+                        <p className="link-item" onClick={() => router.push('/auth/signup')}>Não tenho conta...</p>
+                    </div>
 
+                    <CustomButton startIcon={<SlLogin size={20} />} onClick={() => handleSubmit(handleSubmitPress)()}>
+                        ENTRAR
+                    </CustomButton>
                 </div>
-
             </div>
         </>
     )
