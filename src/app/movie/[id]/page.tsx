@@ -162,10 +162,10 @@ const Movie = ({ params }: Props) => {
                     </div>
                     <div className="movie-description">
                         <h3>
-                            <BsFillFileEarmarkTextFill /> Descrição:
+                            <BsFillFileEarmarkTextFill style={{ marginRight: '0.5rem' }} /> Descrição:
                         </h3>
-                        <p>{movie.overview}</p>
-                        <p>
+                        <p className="description">{movie.overview}</p>
+                        <p className="rating">
                             {movie.vote_average > 0 && <StarRating rating={movie.vote_average} />}
                         </p>
                         <div className="favorite-button">
@@ -180,6 +180,7 @@ const Movie = ({ params }: Props) => {
                             )}
                         </div>
                     </div>
+
                 </div>
             </div>
         </>

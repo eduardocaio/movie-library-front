@@ -18,6 +18,9 @@
 .tagline {
   font-size: 2rem;
   margin-bottom: 1rem;
+  font-weight: bold;
+  text-decoration:overline ;
+  margin-bottom: 30px;
 }
 
 .movie-content {
@@ -54,13 +57,31 @@
 }
 
 .movie-description h3 {
-  margin: 0 0 1rem; 
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.movie-description h3 svg {
+  margin-right: 0.8rem;
 }
 
 .movie-description p {
   margin: 0;
-  text-align: justify; 
+  text-align: justify;
 }
+
+.movie-description .description {
+  margin-bottom: 0.8rem;
+}
+
+.movie-description .rating {
+  margin-bottom: 0.5rem;
+}
+
 
 .favorite-button {
   display: flex;
