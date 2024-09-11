@@ -11,7 +11,6 @@ import CustomCarousel from '@/components/CustomCarousel';
 
 export default function Home() {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -20,17 +19,12 @@ export default function Home() {
         setMovies(data);
       } catch (error) {
         console.error("Error fetching movies", error);
-      } finally {
-        setIsLoading(false);
       }
     };
 
     getMovies();
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   const topMovies = movies.slice(0, 3);
 

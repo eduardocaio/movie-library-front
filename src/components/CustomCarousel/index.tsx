@@ -15,14 +15,14 @@ function CustomCarousel({ movies }: CustomCarouselProps) {
                     style={{
                         position: 'relative',
                         textAlign: 'center',
-                        marginTop: '30px' // Ajuste o valor conforme necessário
+                        marginTop: '30px'
                     }}
                 >
                     <img
                         src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                         alt={movie.title}
                         style={{
-                            width: '30%', // Tamanho fixo da imagem
+                            width: '30%',
                             height: 'auto',
                             objectFit: 'cover'
                         }}
