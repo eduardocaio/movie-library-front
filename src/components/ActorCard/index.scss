@@ -1,0 +1,63 @@
+.actor-card {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .actor-path {
+        width: 100%;
+        height: 70%;
+        position: relative;
+        flex-shrink: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+            transition: opacity .5s;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ccc;
+            color: #666;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+
+    .actor-infos {
+        background: linear-gradient(#831010, #000000 90%);
+        height: 30%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        padding: 10px;
+        box-sizing: border-box;
+
+        .actor-name {
+            font-size: 15px;
+            color: #F1F5F9;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .actor-character {
+            font-size: 15px;
+            color: #F1F5F9;
+            text-decoration: underline;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+    }
+}
