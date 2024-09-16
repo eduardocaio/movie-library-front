@@ -19,7 +19,7 @@
   font-size: 2rem;
   margin-bottom: 1rem;
   font-weight: bold;
-  text-decoration:overline ;
+  text-decoration: overline;
   margin-bottom: 30px;
 }
 
@@ -82,7 +82,6 @@
   margin-bottom: 0.5rem;
 }
 
-
 .favorite-button {
   display: flex;
   justify-content: center; 
@@ -91,4 +90,61 @@
 
 .custom-button {
   width: auto; 
+}
+
+.actors-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 1rem;
+}
+
+.actors-section h3 {
+  margin: 0;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.actors-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  width: calc(100% + 2rem);
+  padding: 0 1rem;
+  scrollbar-width: none;
+}
+
+.actors-container::-webkit-scrollbar {
+  display: none;
+}
+
+.actor-card {
+  flex: 0 0 200px;
+  margin-right: 1rem;
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #831010;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.scroll-button.left {
+  left: 0;
+}
+
+.scroll-button.right {
+  right: 0;
 }

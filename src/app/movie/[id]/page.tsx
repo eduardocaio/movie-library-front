@@ -1,20 +1,23 @@
 'use client';
 
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FaHeart } from "react-icons/fa";
 import { BsFillFileEarmarkTextFill } from "react-icons/bs";
+import { FaTheaterMasks } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
 import ReactLoading from 'react-loading';
+import { GrCaretNext, GrCaretPrevious } from "react-icons/gr";
 
 import StarRating from "@/components/StarRating";
 import env from "@/config/env.config";
 import type { Movie } from "@/types/movie";
 import CustomButton from "@/components/CustomButton";
+import CustomAlert from "@/components/CustomAlert";
+import ActorCard from "@/components/ActorCard";
 
 import './index.scss';
-import CustomAlert from "@/components/CustomAlert";
 
 const checkAuth = () => {
     return localStorage.getItem('TOKEN_API_BACKEND') !== null;
@@ -30,13 +33,15 @@ interface DecodedToken {
 
 const Movie = ({ params }: Props) => {
 
-    let movieEmpty: Movie = {
+    const movieEmpty: Movie = {
         id: 0,
         title: '',
         poster_path: '',
         overview: '',
-        vote_average: 0
-    }
+        vote_average: 0,
+        actors: [],
+        backdrop_path: ''
+    };
 
     const [movie, setMovie] = useState<Movie>(movieEmpty);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -45,6 +50,8 @@ const Movie = ({ params }: Props) => {
     const [userFavoriteMovies, setUserFavoriteMovies] = useState<Movie[]>([]);
     const router = useRouter();
     const [alertInfo, setAlertInfo] = useState<{ variant: string; message: string } | null>(null);
+
+    const actorsContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (alertInfo) {
@@ -92,7 +99,7 @@ const Movie = ({ params }: Props) => {
 
     useEffect(() => {
         getMovie();
-    }, []);
+    }, [params.id]);
 
     const isFavorite = userFavoriteMovies.some(favoriteMovie => favoriteMovie.id === movie.id);
 
@@ -110,10 +117,9 @@ const Movie = ({ params }: Props) => {
 
             getFavoriteMovies(subject);
         } catch (error) {
-            const token = localStorage.removeItem('TOKEN_API_BACKEND');
-            window.location.reload()
-
-            window.location.href = '/auth/login'
+            localStorage.removeItem('TOKEN_API_BACKEND');
+            window.location.reload();
+            window.location.href = '/auth/login';
         }
     }
 
@@ -130,10 +136,9 @@ const Movie = ({ params }: Props) => {
             });
             getFavoriteMovies(subject);
         } catch (error) {
-            const token = localStorage.removeItem('TOKEN_API_BACKEND');
-            window.location.reload()
-
-            window.location.href = '/auth/login'
+            localStorage.removeItem('TOKEN_API_BACKEND');
+            window.location.reload();
+            window.location.href = '/auth/login';
         }
     }
 
@@ -141,12 +146,25 @@ const Movie = ({ params }: Props) => {
         router.push('/auth/login');
     }
 
+    const scrollLeft = () => {
+        if (actorsContainerRef.current) {
+            actorsContainerRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+        }
+    };
+
+    const scrollRight = () => {
+        if (actorsContainerRef.current) {
+            actorsContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+        }
+    };
+
+
     if (isLoading) {
         return (
             <div className="loading-container">
                 <ReactLoading type="spin" color="#6046FF" height={'5%'} width={'5%'} />
             </div>
-        )
+        );
     }
 
     return (
@@ -179,9 +197,26 @@ const Movie = ({ params }: Props) => {
                                 </CustomButton>
                             )}
                         </div>
+
+                        <div className="actors-section">
+                            <h3><FaTheaterMasks style={{ marginRight: '0.5rem' }} />Atores</h3>
+                            <button className="scroll-button left" onClick={scrollLeft}>{<GrCaretPrevious size={20}/>
+                            }</button>
+                            <div className="actors-container" ref={actorsContainerRef}>
+                                {movie.actors.map((actor) => <ActorCard key={actor.id} actor={actor} />)}
+                            </div>
+                            <button className="scroll-button right" onClick={scrollRight}>{<GrCaretNext size={20} />
+                            }</button>
+                        </div>
+
                     </div>
 
+
+
+
                 </div>
+
+
             </div>
         </>
     );
