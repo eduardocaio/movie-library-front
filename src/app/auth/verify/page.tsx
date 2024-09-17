@@ -20,7 +20,7 @@ interface EmailForm {
 }
 
 
-export default function ForgotPassword() {
+export default function NewVerify() {
     const { register, formState: { errors }, handleSubmit, reset } = useForm<EmailForm>();
     const loginService = useMemo(() => new LoginService(), [])
     const router = useRouter();
