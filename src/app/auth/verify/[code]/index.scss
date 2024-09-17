@@ -25,3 +25,11 @@
     max-width: 500px;
     margin: 0;
 }
+
+.button-wrapper {
+    width: 100%;
+}
+
+.button-wrapper > * {
+    width: 100%;
+}

@@ -31,15 +31,19 @@ export default function VerifyUser({ params }: Props) {
     }
 
     return (
-        
         <div className="confirm-container">
             <div className="confirmation-container">
                 <p>Cadastro confirmado com sucesso!</p>
             </div>
             <div className="login-container">
-            <CustomButton startIcon={<SlLogin size={18} />} onClick={handleMoveLogin}>
-                Efetuar Login...
-            </CustomButton>
+                <div className="button-wrapper">
+                    <CustomButton
+                        startIcon={<SlLogin size={18} />}
+                        onClick={handleMoveLogin}
+                    >
+                        Efetuar Login...
+                    </CustomButton>
+                </div>
             </div>
         </div>
     )
