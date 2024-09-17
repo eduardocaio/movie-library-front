@@ -25,4 +25,8 @@ export class LoginService{
     forgotPassword(email: Email){
         return axiosInstance.post('/auth/forgot-password', email)
     }
+
+    newVerifyCode(email: Email){
+        return axiosInstance.put('/auth/new-verification-code', email)
+    }
 }
